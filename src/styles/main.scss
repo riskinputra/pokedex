@@ -1,0 +1,115 @@
+//Default styles
+@import './_variables.scss';
+@import './_mixin.scss';
+@import './_extends.scss';
+@import './_flexboxgrid.scss';
+// @import './_hljs.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  &:hover, *:focus {outline: none}
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/**
+  * GENERAL HTML AND BODY STYLES
+  */
+html, body {
+  font-family             : $font-stack;
+  font-weight             : normal;
+  font-size               : $text-md;
+  line-height             : 150%;
+  overflow-x              : hidden;
+  color                   : $c-white-base;
+  box-sizing              : border-box;
+  height                  : 100%;
+  min-height              : 100%;
+
+  @media screen and (max-width: $screen-sm){
+    font-size : $text-sm;
+  }
+}
+
+body {
+  background-color: $c-grey-darken-1;
+}
+
+input,
+optgroup,
+select,
+textarea {
+  font-family: $font-stack;
+}
+input[type=submit],
+button{
+  font-family: $font-heading;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 1rem 0 1rem 0;
+  font-family: $font-heading;
+  &.is-reset {
+    margin: 0;
+    line-height: 1em;
+  }
+}
+h1 {
+  font-size: (36/16) + rem;
+  small{
+    font-size: (32/16) + rem;
+  }
+}
+h2 {
+  font-size: (32/16) + rem;
+  small{
+    font-size: (24/16) + rem;
+  }
+}
+h3 {
+  font-size: (24/16) + rem;
+  small{
+    font-size: (18/16) + rem;
+  }
+}
+h4 {
+  font-size: (18/16) + rem;
+  small{
+    font-size: (16/16) + rem;
+  }
+}
+h5 {
+  font-size: (16/16) + rem;
+  small{
+    font-size: (14/16) + rem;
+  }
+}
+h6 {
+  font-size: (14/16) + rem;
+  small{
+    font-size: (11/16) + rem;
+  }
+}
+article {
+  p {
+    line-height: 1.5rem;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+

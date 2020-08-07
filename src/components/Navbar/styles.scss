@@ -1,0 +1,17 @@
+@import 'styles/_variables.scss';
+@import 'styles/_mixin.scss';
+
+.navbar {
+  position: relative;
+  background-color: $c-white-base;
+  text-align: center;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+}

@@ -1,0 +1,15 @@
+@import 'styles/_variables.scss';
+@import 'styles/_mixin.scss';
+
+.card {
+  background-color: rgba($c-skyblue-lighten-1, 0.13);
+  border: 1px solid $c-skyblue-darken-1;
+  width: 100%;
+
+  &.rounded-1 {
+    @include border-radius(10px);
+  }
+  &.rounded-2 {
+    @include border-radius(25px);
+  }
+}

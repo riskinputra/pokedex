@@ -1,0 +1,27 @@
+
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.rounded {
+  @include radius;
+}
+.box-shadow {
+  @include box-shadow(0 8px 16px rgba(black, 0.05));
+}
+.img-wrapper {
+  @extend .rounded;
+  @extend .box-shadow;
+}
+.transition {
+  @include transition(cubic-bezier(0.11, 0.65, 0.73, 0.66), 0.2s);
+}
+
+.full-width {
+  width: 100%;
+}

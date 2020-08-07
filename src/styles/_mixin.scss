@@ -1,0 +1,110 @@
+// flexbox
+
+@mixin flexbox {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+@mixin align-items($s...) {
+  -ms-flex-align: $s;
+  -webkit-box-align: $s;
+  align-items: $s;
+}
+@mixin justify-content($s...) {
+  -webkit-justify-content: $s;
+  -ms-flex-pack: $s;
+  justify-content: $s;
+}
+@mixin flex-direction($s...) {
+  flex-direction: $s
+}
+@mixin flex-middle {
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+//box shadow
+@mixin box-shadow($s...) {
+  -webkit-box-shadow: $s;
+  -moz-box-shadow: $s;
+  box-shadow: $s;
+}
+
+// transition
+@mixin transition($s...) {
+  -webkit-transition: $s;
+  -moz-transition: $s;
+  -o-transition: $s;
+  transition: $s;
+}
+
+//border radius
+@mixin radius {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+@mixin border-radius($r) {
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  border-radius: $r;
+}
+@mixin border-radius-bottom($r) {
+  -webkit-border-bottom-right-radius: $r;
+  -webkit-border-bottom-left-radius: $r;
+  -moz-border-radius-bottomright: $r;
+  -moz-border-radius-bottomleft: $r;
+  border-bottom-right-radius: $r;
+  border-bottom-left-radius: $r;
+}
+@mixin border-radius-top($r) {
+  -webkit-border-top-left-radius: $r;
+  -webkit-border-top-right-radius: $r;
+  -moz-border-radius-topleft: $r;
+  -moz-border-radius-topright: $r;
+  border-top-left-radius: $r;
+  border-top-right-radius: $r;
+}
+@mixin border-radius-right($r) {
+  -webkit-border-top-right-radius: $r;
+  -webkit-border-bottom-right-radius: $r;
+  -moz-border-radius-topright: $r;
+  -moz-border-radius-bottomright: $r;
+  border-top-right-radius: $r;
+  border-bottom-right-radius: $r;
+}
+@mixin border-radius-left($r) {
+  -webkit-border-top-left-radius: $r;
+  -webkit-border-bottom-left-radius: $r;
+  -moz-border-radius-topleft: $r;
+  -moz-border-radius-bottomleft: $r;
+  border-top-left-radius: $r;
+  border-bottom-left-radius: $r;
+}
+@mixin border-radius-top-left($r) {
+  -webkit-border-top-left-radius: $r;
+  -moz-border-radius-topleft: $r;
+  border-top-left-radius: $r;
+}
+@mixin border-radius-top-right($r) {
+  -webkit-border-top-right-radius: $r;
+  -moz-border-radius-topright: $r;
+  border-top-right-radius: $r;
+}
+@mixin border-radius-bottom-left($r) {
+  -webkit-border-bottom-left-radius: $r;
+  -moz-border-radius-bottomleft: $r;
+  border-bottom-left-radius: $r;
+}
+@mixin border-radius-bottom-right($r) {
+  -webkit-border-bottom-right-radius: $r;
+  -moz-border-radius-bottomright: $r;
+  border-bottom-right-radius: $r;
+}
+@mixin transform($s...){
+  -webkit-transform: $s;
+  -moz-transform: $s;
+  transform: $s;
+}

@@ -1,0 +1,38 @@
+@import 'styles/_variables.scss';
+@import 'styles/_mixin.scss';
+
+.searchbar {
+  margin-top: 50px + $gutter-xl;
+
+  .searchbar {
+    &-form {
+      width: 100%;
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+    }
+  }
+
+  input, button {
+    height: 40px;
+    padding: 0 $gutter-md;
+    border: none;
+  }
+  input {
+    width: 65%;
+    @include border-radius-left(20px);
+  }
+  button {
+    color: $c-skyblue-base;
+    background-color: $c-skyblue-lighten-2;
+    @include border-radius-right(20px);
+
+    &:hover {
+      color: $c-skyblue-darken-1;
+    }
+    
+    i {
+      margin-right: $gutter-sm;
+    }
+  }
+}

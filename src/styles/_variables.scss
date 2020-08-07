@@ -1,0 +1,48 @@
+// Color variables
+$c-skyblue-base: #39BAF5;
+$c-skyblue-darken-1: #4DAEE9;
+$c-skyblue-lighten-1: #9DDEFC;
+$c-skyblue-lighten-2: #B4EBFF;
+
+$c-pink-base: #DC78C8;
+$c-pink-lighten-1: #F08CDC;
+
+$c-grey-base: #707070;
+$c-grey-darken-1: #0A141E; //
+
+$c-black-base: #000000;
+$c-white-base: #FFFFFF;
+
+// Text sizes
+$text-huge:36px;
+$text-xxl:32px;
+$text-xl:24px;
+$text-lg:18px;
+$text-md:16px;
+$text-sm:14px;
+$text-xs:12px;
+$text-xxs:11px;
+
+//screen size
+$screen-lg:1200px; // 1200px //75em
+$screen-md:992px; // 992px //62em
+$screen-sm:768px;// 768px //48em
+
+// gutter - used for both padding and margin
+$gutter-md: 16px;
+$gutter-xxl: $gutter-md * 4; //64px
+$gutter-xl: $gutter-md * 2; //32px
+$gutter-lg: $gutter-md * 1.5; //24px
+$gutter-sm: $gutter-md / 2; //8px
+$gutter-xs: $gutter-md / 4; //4px
+$gutter-xxs: $gutter-md / 8; //2px
+
+$c-bg-color: rgba(white, 0.8);
+$card-box-shadow: 0 0 0 1px rgba(black, 0.05), 0 2px 5px 0 rgba(black, 0.05);
+
+// font family
+$font-heading: 'Open Sans', sans-serif;
+$font-stack: 'Open Sans', sans-serif;
+$font-bold: 600;
+$font-regular: 400;
+
