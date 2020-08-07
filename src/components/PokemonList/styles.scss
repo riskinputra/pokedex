@@ -2,49 +2,54 @@
 @import 'styles/_mixin.scss';
 
 .pokemon-list {
-  .pokemon-list {
-    &--image {
-      width: 100%;
-      height: 265px;
-      padding: $gutter-md;
-      position: relative;
-      border-bottom: 1px solid $c-skyblue-darken-1;
+  a {
+    text-decoration: none;
 
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(center);
-    }
-
-    &--card {
-      margin-bottom: $gutter-lg;
-    }
-
-    &--monster {
-      position: relative;
-      z-index: 2;
-      height: 80%;
-    }
-
-    &--pokeball {
-      position: absolute;
-      z-index: 1;
-      height: 100%;
-    }
-
-    &--content {
-      padding: $gutter-md;
-      &-id {
-        color: $c-skyblue-lighten-2;
-      }
-      &-name {
-        font-size: $text-xl;
-        line-height: 33px;
-        text-transform: capitalize;
-      }
-      &-head {
+    .pokemon-list {
+      &--image {
+        width: 100%;
+        height: 265px;
+        padding: $gutter-md;
+        position: relative;
+        border-bottom: 1px solid $c-skyblue-darken-1;
+  
         @include flexbox;
         @include align-items(center);
-        @include justify-content(space-between);
+        @include justify-content(center);
+      }
+  
+      &--card {
+        margin-bottom: $gutter-lg;
+      }
+  
+      &--monster {
+        position: relative;
+        z-index: 2;
+        height: 80%;
+      }
+  
+      &--pokeball {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+      }
+  
+      &--content {
+        padding: $gutter-md;
+        &-id {
+          color: $c-skyblue-lighten-2;
+        }
+        &-name {
+          color: $c-white-base;
+          font-size: $text-xl;
+          line-height: 33px;
+          text-transform: capitalize;
+        }
+        &-head {
+          @include flexbox;
+          @include align-items(center);
+          @include justify-content(space-between);
+        }
       }
     }
   }

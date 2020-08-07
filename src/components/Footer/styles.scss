@@ -1,0 +1,14 @@
+@import 'styles/_variables.scss';
+@import 'styles/_mixin.scss';
+
+.footer {
+  margin-top: $gutter-lg;
+  padding: $gutter-md;
+  width: 100%;
+  border-top: 1px solid $c-skyblue-darken-1;
+  font-size: $text-sm;
+
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+}

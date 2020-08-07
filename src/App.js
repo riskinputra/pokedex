@@ -14,11 +14,11 @@ function App() {
         <PokemonsContextProvider>
           <Navbar />
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
             <Route path="/pokemon/:id">
               <Pokemon />
+            </Route>
+            <Route exact path="/">
+              <Home />
             </Route>
           </Switch>
         </PokemonsContextProvider>

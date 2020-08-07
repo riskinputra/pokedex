@@ -43,8 +43,66 @@
     }
 
     &--spesification {
+      padding-bottom: $gutter-lg;
+      border-bottom: 1px solid $c-skyblue-darken-1;
       h4 {
         color: $c-skyblue-lighten-2;
+      }
+      &-detail {
+        @include flexbox;
+        &-left, &-right {
+          flex: 1;
+        }
+      }
+    }
+
+    &--stat {
+      margin: $gutter-lg 0;
+      text-transform: capitalize;
+      .bar {
+        background-color: rgba($color: $c-skyblue-lighten-1, $alpha: 0.5);
+        border: 1px solid $c-skyblue-darken-1;
+        padding: $gutter-xxs;
+        margin-bottom: 5px;
+        font-size: $text-sm;
+        color: #FFF;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        @include border-radius(50px);
+  
+        &::before {
+          content:  attr(data-text);
+          background-color: $c-skyblue-base;
+          display: inline-block;
+          padding: 5px 0 5px 10px;
+          border-radius: inherit;
+          animation: load 2s 0s;
+          width: calc(var(--data-state) - 10px);
+          -webkit-animation: load 2s 0s;
+          -moz-animation: load 2s 0s;
+          -o-animation: load 2s 0s;
+        }
+      }
+
+      @keyframes load{
+        from {
+          width: 0%
+        }
+      }
+      @-webkit-keyframes load{
+        from {
+          width: 0%
+        }
+      }
+      @-moz-keyframes load{
+        from {
+          width: 0%
+        }
+      }
+      @-o-keyframes load{
+        from {
+          width: 0%
+        }
       }
     }
   }

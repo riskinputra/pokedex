@@ -6,6 +6,7 @@ import { result, find, map, forEach } from 'lodash'
 import { PokemonsContext } from 'context/pokemons-context'
 
 import Chip from 'components/Chip'
+import Footer from 'components/Footer'
 
 import bg1 from './img/bg-1.png'
 
@@ -45,7 +46,6 @@ function PokemonDetail() {
 
   useEffect(() => {
     fetchPokemonsDetail()
-    console.log('state', state)
   }, [])
 
   const monsterImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg` || result(state.pokemonDetail, 'sprites.front_default')
@@ -61,8 +61,17 @@ function PokemonDetail() {
       <Chip type={`type-${result(weak, 'name')}`}>{result(weak, 'name')}</Chip>
     </span>
   ))
+
+  const pokemonAbilities = map(result(state.pokemonDetail, 'abilities', []), (ability, index) => 
+    (ability.is_hidden && <span key={index} >
+      <Chip type="type-ability">{result(ability, 'ability.name')}</Chip>
+    </span>)
+  )
+
+  const pokemonStat = map(result(state.pokemonDetail, 'stats', []), (stat, index) => (
+    <div key={index} className="bar" data-text={stat.stat.name} style={{'--data-state': `${stat.base_stat}%`}}></div>
+  ))
   
-  console.log('detail', state)
   return (
     <div id="pokemon-detail" className="pokemon-detail">
       <div className="row">
@@ -96,8 +105,43 @@ function PokemonDetail() {
                   {pokemonWeakness}
                 </div>
               </div>
+              <div className="pokemon-detail--spesification-detail">
+                <div className="pokemon-detail--spesification-detail-left">
+                  <div>
+                    <h4>Height :</h4>
+                    <div>
+                      {result(state.pokemonDetail, 'height') / 10} m
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Weakness :</h4>
+                    <div>
+                    {result(state.pokemonDetail, 'weight') / 10} kg
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pokemon-detail--spesification-detail-right">
+                  <div>
+                    <h4>Abilities :</h4>
+                    <div>
+                      {pokemonAbilities}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Category :</h4>
+                    <div>
+                      {result(state.pokemonDetail, 'pokemon_category')}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="pokemon-detail--stat"></div>
+            <div className="pokemon-detail--stat">
+              {pokemonStat}
+            </div>
+
+            <Footer />
           </div>
         </div>
       </div>

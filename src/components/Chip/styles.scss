@@ -14,7 +14,7 @@
   @include border-radius(50px);
 
   &.type {
-    &-normal {
+    &-normal, &-ability {
       border-color: #dcdcdc;
       background-color: #a0a0a0;
       -webkit-box-shadow: 0 0 .25em .03em #a0a0a0;
@@ -143,7 +143,8 @@
       border-color: #fff;
       background-color: #fff;
       -webkit-box-shadow: 0 0 .25em .03em #fff;
-      box-shadow: 0 0 .25em .03em #fff
+      box-shadow: 0 0 .25em .03em #fff;
+      color: $c-grey-darken-1;
     }
   }
 }
