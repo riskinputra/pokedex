@@ -11,10 +11,8 @@ import './styles.scss'
 
 function PokemonList() {
   const [state, dispatch] = useContext(PokemonsContext)
-  // const [pokemons, setPokemons] = useState([])
 
   const setPokemons = data => {
-    console.log('data', data)
     dispatch({
       type: 'ADD_POKEMONS',
       payload: data

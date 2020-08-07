@@ -1,0 +1,10 @@
+@import 'styles/_variables.scss';
+@import 'styles/_mixin.scss';
+
+.pokemon {
+  .pokemon {
+    &-content {
+      margin-top: $gutter-xxl;
+    }
+  }
+}

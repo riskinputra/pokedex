@@ -4,7 +4,8 @@ import React, { useReducer, createContext } from "react"
 export const PokemonsContext = createContext()
 
 const initState = {
-  pokemons: {}
+  pokemons: {},
+  pokemonDetail: {}
 }
 
 const reducer = (state, action) => {
@@ -12,6 +13,10 @@ const reducer = (state, action) => {
     case 'ADD_POKEMONS':
       return {
         pokemons: action.payload
+      }
+    case 'ADD_POKEMONS_DETAILS':
+      return {
+        pokemonDetail: action.payload
       }
     default:
       throw new Error()

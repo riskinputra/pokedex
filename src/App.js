@@ -5,6 +5,7 @@ import { PokemonsContextProvider } from "context/pokemons-context";
 import Navbar from 'components/Navbar'
 
 import Home from 'pages/Home'
+import Pokemon from 'pages/Pokemon'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route path="/pokemon/:id">
+              <Pokemon />
             </Route>
           </Switch>
         </PokemonsContextProvider>
