@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useParams } from "react-router-dom"
 import axios from 'axios'
 import { result, find, map, forEach } from 'lodash'
+import { Link } from "react-router-dom"
 
 import { PokemonsContext } from 'context/pokemons-context'
 
@@ -13,8 +14,8 @@ import bg1 from './img/bg-1.png'
 import './styles.scss'
 
 function PokemonDetail() {
+  const {id} = useParams()
   const [state, dispatch] = useContext(PokemonsContext)
-  const { id } = useParams()
 
   const setPokemonsDetail = data => {
     dispatch({
@@ -28,9 +29,15 @@ function PokemonDetail() {
     return await result(resTypeDetail.data, 'damage_relations.double_damage_from')
   }
 
-  const fetchPokemonsDetail = async () => {
+  const fetchPokemonsDetail = async id => {
+    console.log('object', id)
+    console.log('ld', id)
     const resDetail = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const resDesc = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+    const resPrevData = Number(id) - 1 !== 0 ? await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${Number(id) - 1}`)).data.name : null
+    const resNextData = await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${Number(id) + 1}`)).data.name
+
+    console.log({ resPrevData, resNextData })
     const pokemon_description = find(resDesc.data.flavor_text_entries, text => text.version.name === 'ruby' ).flavor_text
     const pokemon_category = find(resDesc.data.genera, cat => cat.language.name === 'en' ).genus
     const typeMaping = await Promise.all(
@@ -41,12 +48,17 @@ function PokemonDetail() {
       pokemon_weakness.push(...weakness)
     })
 
-    setPokemonsDetail({ ...resDetail.data, pokemon_description, pokemon_category, pokemon_weakness })
+    setPokemonsDetail({ ...resDetail.data, pokemon_description, pokemon_category, pokemon_weakness, prevPokemon: resPrevData, nextPokemon: resNextData })
   }
 
   useEffect(() => {
-    fetchPokemonsDetail()
+    fetchPokemonsDetail(id)
   }, [])
+
+  const handleNavPokemon = newId => {
+    console.log({ newId })
+    fetchPokemonsDetail(newId)
+  }
 
   const monsterImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg` || result(state.pokemonDetail, 'sprites.front_default')
 
@@ -71,7 +83,21 @@ function PokemonDetail() {
   const pokemonStat = map(result(state.pokemonDetail, 'stats', []), (stat, index) => (
     <div key={index} className="bar" data-text={stat.stat.name} style={{'--data-state': `${stat.base_stat}%`}}></div>
   ))
-  
+
+  const prevPokemonButton = result(state.pokemonDetail, 'prevPokemon') && (<div className="pokemon-detail--nav-prev">
+    <Link to={`/pokemon/${Number(id) - 1}`} onClick={() => handleNavPokemon(Number(id) - 1)}>
+      <i className="fa fa-chevron-left" />
+      {result(state.pokemonDetail, 'prevPokemon')}
+    </Link>
+  </div>)
+
+  const nextPokemonButton = result(state.pokemonDetail, 'nextPokemon') && (<div className="pokemon-detail--nav-next">
+    <Link to={`/pokemon/${Number(id) + 1}`} onClick={() => handleNavPokemon(Number(id) + 1)}>
+      {result(state.pokemonDetail, 'nextPokemon')}
+      <i className="fa fa-chevron-right" />
+    </Link>
+  </div>)
+  console.log('ren', id)
   return (
     <div id="pokemon-detail" className="pokemon-detail">
       <div className="row">
@@ -80,6 +106,10 @@ function PokemonDetail() {
             <div className="pokemon-detail--img">
               <img className="pokemon-detail--monster" src={monsterImage} alt={result(state.pokemonDetail, 'name')} />
               <img className="pokemon-detail--bg1" src={bg1} alt="bg1" />
+            </div>
+            <div className="pokemon-detail--nav">
+              {prevPokemonButton}
+              {nextPokemonButton}
             </div>
           </div>
         </div>

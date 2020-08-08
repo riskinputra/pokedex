@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import { map, result } from 'lodash'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 import { PokemonsContext } from 'context/pokemons-context'
 import Card from 'components/Card'

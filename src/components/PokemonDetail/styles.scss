@@ -4,13 +4,15 @@
 .pokemon-detail {
   position: relative;
   .pokemon-detail {
+    // Side Left
     &--left {
       width: 100%;
+      position: relative;
     }
     &--img {
       position: relative;
       width: 100%;
-      height: calc(100vh - 64px);
+      height: calc(100vh - 150px);
       @include flexbox;
       @include align-items(center);
       @include justify-content(center);
@@ -26,15 +28,100 @@
       animation: rotate-anime 9s linear infinite;
       position: fixed;
       z-index: 1;
+
+      @media only screen and (max-width: $screen-md - 1) {
+        width: 300px;
+      }
+      @media only screen and (max-width: $screen-sm) {
+        position: absolute;
+      }
     }
     &--monster {
       position: fixed;
       z-index: 3;
       margin: auto;
+
+      @media only screen and (max-width: $screen-md - 1) {
+        width: 200px;
+      }
+      @media only screen and (max-width: $screen-sm) {
+        position: absolute;
+      }
     }
+    &--nav {
+      position: fixed;
+      z-index: 5;
+
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-between);
+
+      &-prev, &-next {
+        padding: $gutter-md;
+        background-color: rgba($color: $c-skyblue-lighten-1, $alpha: 0.3);
+        border: 1px solid $c-skyblue-darken-1;
+        font-size: $text-lg;
+        text-transform: capitalize;
+
+        &:hover {
+          background-color: rgba($color: $c-skyblue-lighten-1, $alpha: 0.5);
+        }
+
+        a {
+          color: $c-skyblue-lighten-2;
+          text-decoration: none;
+        }
+
+        .fa-chevron {
+          &-left {
+            margin-right: $gutter-md;
+          }
+          &-right {
+            margin-left: $gutter-md;
+          }
+        }
+
+        @media only screen and (min-width: $screen-md) {
+          max-width: 200px;
+        }
+        @media only screen and (max-width: 1024px) {
+          font-size: $text-sm;
+        }
+        @media only screen and (max-width: $screen-md - 1) {
+          font-size: $text-xs;
+          padding: $gutter-sm;
+        }
+      }
+
+      &-prev {
+        @include border-radius-left(50px);
+      }
+      &-next {
+        @include border-radius-right(50px);
+      }
+
+      @media only screen and (min-width: $screen-lg - 1) {
+        width: 560px;
+      }
+      @media only screen and (max-width: 1024px) {
+        width: 460px;
+      }
+      @media only screen and (max-width: $screen-md) {
+        width: 340px;
+      }
+      @media only screen and (max-width: $screen-sm) {
+        width: 100%;
+        position: absolute;
+      }
+    }
+  
+    // SIde right
     &--header {
       margin-bottom: $gutter-lg;
       text-transform: capitalize;
+      @media only screen and (max-width: $screen-sm) {
+        margin-top: $gutter-xxl + $gutter-md;
+      }
     }
 
     &--desc {
