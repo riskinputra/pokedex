@@ -28,8 +28,6 @@ function PokemonList() {
     fetchPokemons()
   }, [])
 
-  console.log('state', state)
-
   const pokemonsList = map(result(state.pokemons, 'results', []), pokemon => {
     const pokemonSplitUrl = result(pokemon, 'url').split('/')
     const getId = pokemonSplitUrl[pokemonSplitUrl.length - 2]

@@ -24,20 +24,23 @@ function PokemonDetail() {
     })
   }
 
+  const showLoading = () => {
+    dispatch({
+      type: 'SHOW_LOADING'
+    })
+  }
+
   const getTypeDetail = async item => {
     const resTypeDetail = await axios.get(item.type.url)
     return await result(resTypeDetail.data, 'damage_relations.double_damage_from')
   }
 
   const fetchPokemonsDetail = async id => {
-    console.log('object', id)
-    console.log('ld', id)
     const resDetail = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const resDesc = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
     const resPrevData = Number(id) - 1 !== 0 ? await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${Number(id) - 1}`)).data.name : null
     const resNextData = await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${Number(id) + 1}`)).data.name
 
-    console.log({ resPrevData, resNextData })
     const pokemon_description = find(resDesc.data.flavor_text_entries, text => text.version.name === 'ruby' ).flavor_text
     const pokemon_category = find(resDesc.data.genera, cat => cat.language.name === 'en' ).genus
     const typeMaping = await Promise.all(
@@ -52,11 +55,12 @@ function PokemonDetail() {
   }
 
   useEffect(() => {
+    showLoading()
     fetchPokemonsDetail(id)
   }, [])
 
   const handleNavPokemon = newId => {
-    console.log({ newId })
+    showLoading()
     fetchPokemonsDetail(newId)
   }
 
@@ -97,7 +101,6 @@ function PokemonDetail() {
       <i className="fa fa-chevron-right" />
     </Link>
   </div>)
-  console.log('ren', id)
   return (
     <div id="pokemon-detail" className="pokemon-detail">
       <div className="row">

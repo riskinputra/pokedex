@@ -6,7 +6,8 @@ export const PokemonsContext = createContext()
 const initState = {
   pokemons: {},
   pokemonDetail: {},
-  isSearch: false
+  isSearch: false,
+  isLoading: true
 }
 
 const reducer = (state, action) => {
@@ -14,23 +15,31 @@ const reducer = (state, action) => {
     case 'ADD_POKEMONS':
       return {
         pokemons: action.payload,
-        isSearch: false
+        isSearch: false,
+        isLoading: false
       }
     case 'ADD_POKEMONS_DETAILS':
       return {
         pokemonDetail: action.payload,
-        isSearch: false
+        isSearch: false,
+        isLoading: false
       }
     case 'ADD_POKEMONS_SEARCH':
       return {
         ...state,
         pokemons: { ...state.pokemons, results: [action.payload] },
-        isSearch: true
+        isSearch: true,
+        isLoading: false
       }
     case 'ADD_POKEMONS_MORE':
       return {
         pokemons: { ...state.pokemons, results: [...state.pokemons.results, ...action.payload.results] },
-        isSearch: false
+        isSearch: false,
+        isLoading: false
+      }
+    case 'SHOW_LOADING':
+      return {
+        isLoading: true
       }
     default:
       throw new Error()

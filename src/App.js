@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import { PokemonsContextProvider } from "context/pokemons-context";
 import Navbar from 'components/Navbar'
+import Loading from 'components/Loading'
 
 import Home from 'pages/Home'
 import Pokemon from 'pages/Pokemon'
@@ -13,6 +14,7 @@ function App() {
       <div id="app" className="App">
         <PokemonsContextProvider>
           <Navbar />
+          <Loading />
           <Switch>
             <Route path="/pokemon/:id">
               <Pokemon />
