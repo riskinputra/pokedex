@@ -35,3 +35,12 @@ $ yarn start
 > **Note**:
 > 1. Please check your node and npm version first. This repository run on node v10.19.0 and npm 6.13.4.
 > 2. If you have problem with CORS. Please install the [Allow-Control-Allow-Origin plugin](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US), and make sure the icon’s label goes from “off” to "on". Then refresh your application, and your API requests should now work! 🎉
+
+___
+
+## My Warframe
+
+This is the warframe I created before I started working on it.
+
+![home](public/Home.png)
+![detail](public/Details.png)
