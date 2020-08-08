@@ -8,4 +8,23 @@
       margin-top: $gutter-xxl;
     }
   }
+  .more-button {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+
+    button {
+      width: 50%;
+      padding: $gutter-md;
+      color: $c-skyblue-lighten-2;
+      background-color: rgba($color: $c-skyblue-lighten-1, $alpha: 0.3);
+      border: 1px solid $c-skyblue-darken-1;
+      font-size: $text-lg;
+      @include border-radius(50px);
+
+      &:hover {
+        background-color: rgba($color: $c-skyblue-lighten-1, $alpha: 0.5);
+      }
+    }
+  }
 }

@@ -18,10 +18,6 @@
         @include justify-content(center);
       }
   
-      &--card {
-        margin-bottom: $gutter-lg;
-      }
-  
       &--monster {
         position: relative;
         z-index: 2;
@@ -31,7 +27,11 @@
       &--pokeball {
         position: absolute;
         z-index: 1;
-        height: 100%;
+        width: 100%;
+
+        @media only screen and (max-width: $screen-sm - 1) {
+          width: 80%;
+        }
       }
   
       &--content {
@@ -52,5 +52,9 @@
         }
       }
     }
+  }
+
+  &--card {
+    margin-bottom: $gutter-lg;
   }
 }

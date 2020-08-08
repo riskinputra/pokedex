@@ -28,11 +28,13 @@ function PokemonList() {
     fetchPokemons()
   }, [])
 
+  console.log('state', state)
+
   const pokemonsList = map(result(state.pokemons, 'results', []), pokemon => {
     const pokemonSplitUrl = result(pokemon, 'url').split('/')
     const getId = pokemonSplitUrl[pokemonSplitUrl.length - 2]
     return (
-      <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12 pokemon-list--card" id={`pokemon-${pokemon.name}-${getId}`} key={`pokemon-${pokemon.name}-${getId}`}>
+      <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 pokemon-list--card" id={`pokemon-${pokemon.name}-${getId}`} key={`pokemon-${pokemon.name}-${getId}`}>
         <Card>
           <Link to={`/pokemon/${getId}`}>
             <div className="pokemon-list--image">

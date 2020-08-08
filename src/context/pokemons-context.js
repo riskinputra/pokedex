@@ -5,18 +5,32 @@ export const PokemonsContext = createContext()
 
 const initState = {
   pokemons: {},
-  pokemonDetail: {}
+  pokemonDetail: {},
+  isSearch: false
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_POKEMONS':
       return {
-        pokemons: action.payload
+        pokemons: action.payload,
+        isSearch: false
       }
     case 'ADD_POKEMONS_DETAILS':
       return {
-        pokemonDetail: action.payload
+        pokemonDetail: action.payload,
+        isSearch: false
+      }
+    case 'ADD_POKEMONS_SEARCH':
+      return {
+        ...state,
+        pokemons: { ...state.pokemons, results: [action.payload] },
+        isSearch: true
+      }
+    case 'ADD_POKEMONS_MORE':
+      return {
+        pokemons: { ...state.pokemons, results: [...state.pokemons.results, ...action.payload.results] },
+        isSearch: false
       }
     default:
       throw new Error()
